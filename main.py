@@ -46,7 +46,9 @@ class SMZDM_Bot(object):
             return msg.json()
         return msg.content
 
-
+def notify_user(token: str, msg: str):
+    rs = requests.post(url="https://sre24.com/api/v1/push", json=dict(token=token, msg=msg)).json()
+    assert int(rs["code"] / 100) == 2, rs
 
 
 if __name__ == '__main__':
@@ -60,7 +62,5 @@ if __name__ == '__main__':
     print('sc_key: ', SERVERCHAN_SECRETKEY)
     if isinstance(SERVERCHAN_SECRETKEY,str) and len(SERVERCHAN_SECRETKEY)>0:
         print('检测到 SCKEY， 准备推送')
-        push_to_wechat(text = '什么值得买每日签到',
-                        desp = str(res),
-                        secretKey = SERVERCHAN_SECRETKEY)
+        SERVERCHAN_SECRETKEY and notify_user(token=SERVERCHAN_SECRETKEY, msg=str(res))
     print('代码完毕')
