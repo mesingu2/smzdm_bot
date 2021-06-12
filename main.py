@@ -62,5 +62,5 @@ if __name__ == '__main__':
     print('sc_key: ', SERVERCHAN_SECRETKEY)
     if isinstance(SERVERCHAN_SECRETKEY,str) and len(SERVERCHAN_SECRETKEY)>0:
         print('检测到 SCKEY， 准备推送')
-        SERVERCHAN_SECRETKEY and notify_user(token=SERVERCHAN_SECRETKEY, msg=str(res))
+        SERVERCHAN_SECRETKEY and notify_user(token=SERVERCHAN_SECRETKEY, msg=str(res)-"{error_code':0,'error_msf':")
     print('代码完毕')
